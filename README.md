@@ -1,3 +1,3 @@
-# TIL(Today I Learned)
+# TIL(Today I Learned)✔
 ---
 ## 하루에 한 일과, 내일 해야할 일을 간단히 계획해 작성하는 일기장입니다.
