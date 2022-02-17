@@ -3,3 +3,70 @@
 ## 오늘 한 일
 
 * 데이터 시각화 프로젝트
+  * 새벽에 화신조원님이 만들으신 html, css파일로 대충 구도를 잡아봤다.
+  
+  * 하지만 스타일이나 영역등을 잡는데 시간을 많이 소모할 것 같아서 BootStrap을 사용해보려고 한다.
+  
+  * 그래서 부트스트랩을 어떻게, 언제 사용해야하는지 조금 조사해보려고한다.
+  
+  * 09:33
+  
+    * 부트스트랩 개념 및 적용 기본
+  
+      참고 : [https://blog.naver.com/hj_kim97/222575927196](https://blog.naver.com/hj_kim97/222575927196)
+    
+  * 10:07
+  
+    * chart.js를 활용하면 좋을 것 같다.
+  
+      참고 : [https://mieumje.tistory.com/56](https://mieumje.tistory.com/56)
+  
+    * ajax + chart.js
+  
+      참고 : [https://blog.naver.com/rival6821/221807535411](https://blog.naver.com/rival6821/221807535411)
+  
+  * 11:20
+  
+    * 우리가 생각하는 분석 페이지는 이런느낌? 정말 초안
+    * ![image-20220217115202813](C:\projects\images\220217_TIDmd\image-20220217115202813.png)
+  
+  * 13:04
+  
+    * 장고로 인덱스 페이지부터 만들어서 페이지 구성에 대해 각자 큰 틀만 만들어 오기로 했다.
+    
+  * 16:30
+  
+    * 장고로 정말 기초적인 부분만 재현해 봤다.
+  
+    * ![image-20220217164156063](C:\projects\images\220217_TIDmd\image-20220217164156063.png)
+  
+    * ![image-20220217164208279](C:\projects\images\220217_TIDmd\image-20220217164208279.png)
+  
+    * ![image-20220217164223908](C:\projects\images\220217_TIDmd\image-20220217164223908.png)
+  
+    * 하.. get/post 방식도 해매서 엄청 찾아봤다. 변수보내는게 이렇게 어려웠던 일인가 ㅠㅠㅠㅠ
+  
+      * `form`태그 안에서 `post`방식으로 보낼 시에 `input`이나 기타 변수명은 `name` 속성을 이용하면 된다. 꼭!!! 기억하자..
+  
+      * 그리고 `views.py`에서 post로 전송한 값을 정의해 렌더링해야하는 것도 잊지말자.
+  
+      * ```python
+        def get_post(request):
+            if request.method == 'POST':
+                # 요부분 ㅠㅠㅠ
+                gu = request.POST['gu']
+                return render(request, 'guinfo.html', {'gu':gu})
+            else:
+                return redirect('selectgu')
+        ```
+  
+    * 이제 저 푸른 곳에 우리가 데이터들을  분석한 결과(차트)를 올려야한다.
+  
+    * chart.js써야할까.. 뭘써야할까 우선 테스트해봐야겠다.
+  
+    * 그리고 우리는 데이터베이스를 사용하지 않기 때문에, views.py에서 데이터를 불러와서 처리해줘야한다 ㅠㅠ
+  
+  * 17:15
+  
+    * ![image-20220217171552344](C:\projects\images\220217_TIDmd\image-20220217171552344.png)
+    *  `chart.js`를 사용해봤다. `<div>` 영역에 `<canvas>`를 사용해 차트객체를 넣어주면 된다. 생각보다 괜찮은 방법인거 같다.
